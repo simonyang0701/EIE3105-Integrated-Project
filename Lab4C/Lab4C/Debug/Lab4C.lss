@@ -1,0 +1,270 @@
+
+Lab4C.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000002  00800100  00000148  000001bc  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000148  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  000001be  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000001f0  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000040  00000000  00000000  00000230  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000007fc  00000000  00000000  00000270  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000006d1  00000000  00000000  00000a6c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000002fb  00000000  00000000  0000113d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000064  00000000  00000000  00001438  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000003c0  00000000  00000000  0000149c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000163  00000000  00000000  0000185c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000030  00000000  00000000  000019bf  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   8:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  10:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  14:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  18:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  1c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  20:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  24:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  28:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  2c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  30:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  34:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  38:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  3c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  40:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  44:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  48:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  4c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  50:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  54:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  58:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  5c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  60:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  64:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e8 e4       	ldi	r30, 0x48	; 72
+  7c:	f1 e0       	ldi	r31, 0x01	; 1
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a2 30       	cpi	r26, 0x02	; 2
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+  8a:	0e 94 76 00 	call	0xec	; 0xec <main>
+  8e:	0c 94 a2 00 	jmp	0x144	; 0x144 <_exit>
+
+00000092 <__bad_interrupt>:
+  92:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000096 <USART_Init>:
+	/* Wait for data to be received */
+	while ( !(UCSR0A & (1 << RXC0)) )
+	;
+	/* Get and return received data from buffer */
+	return UDR0;
+}
+  96:	90 93 c5 00 	sts	0x00C5, r25	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7e00c5>
+  9a:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7e00c4>
+  9e:	88 e1       	ldi	r24, 0x18	; 24
+  a0:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
+  a4:	86 e0       	ldi	r24, 0x06	; 6
+  a6:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7e00c2>
+  aa:	08 95       	ret
+
+000000ac <USART_Transmit>:
+  ac:	e0 ec       	ldi	r30, 0xC0	; 192
+  ae:	f0 e0       	ldi	r31, 0x00	; 0
+  b0:	90 81       	ld	r25, Z
+  b2:	95 ff       	sbrs	r25, 5
+  b4:	fd cf       	rjmp	.-6      	; 0xb0 <USART_Transmit+0x4>
+  b6:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
+  ba:	08 95       	ret
+
+000000bc <getNextState>:
+
+unsigned char getNextState(unsigned char cur, unsigned char input_char) {
+	if(cur ==  NORMAL) {
+  bc:	81 11       	cpse	r24, r1
+  be:	06 c0       	rjmp	.+12     	; 0xcc <getNextState+0x10>
+		if(input_char == DEFAULT_CHAR)
+  c0:	61 36       	cpi	r22, 0x61	; 97
+  c2:	81 f0       	breq	.+32     	; 0xe4 <getNextState+0x28>
+		return NORMAL;
+		
+		tmp_char = input_char;
+  c4:	60 93 00 01 	sts	0x0100, r22	; 0x800100 <__data_start>
+		return TENCHAR;
+  c8:	82 e0       	ldi	r24, 0x02	; 2
+  ca:	08 95       	ret
+	}
+	
+	if(cur == PAUSE) {
+  cc:	81 30       	cpi	r24, 0x01	; 1
+  ce:	31 f4       	brne	.+12     	; 0xdc <getNextState+0x20>
+}
+
+unsigned char getNextState(unsigned char cur, unsigned char input_char) {
+	if(cur ==  NORMAL) {
+		if(input_char == DEFAULT_CHAR)
+		return NORMAL;
+  d0:	90 91 00 01 	lds	r25, 0x0100	; 0x800100 <__data_start>
+  d4:	96 13       	cpse	r25, r22
+  d6:	09 c0       	rjmp	.+18     	; 0xea <getNextState+0x2e>
+  d8:	80 e0       	ldi	r24, 0x00	; 0
+  da:	08 95       	ret
+		return PAUSE;
+
+		return NORMAL;
+	}
+	
+	if(cur ==  TENCHAR)
+  dc:	82 30       	cpi	r24, 0x02	; 2
+  de:	21 f0       	breq	.+8      	; 0xe8 <getNextState+0x2c>
+	return PAUSE;
+	
+	return 255;
+  e0:	8f ef       	ldi	r24, 0xFF	; 255
+  e2:	08 95       	ret
+}
+
+unsigned char getNextState(unsigned char cur, unsigned char input_char) {
+	if(cur ==  NORMAL) {
+		if(input_char == DEFAULT_CHAR)
+		return NORMAL;
+  e4:	80 e0       	ldi	r24, 0x00	; 0
+  e6:	08 95       	ret
+
+		return NORMAL;
+	}
+	
+	if(cur ==  TENCHAR)
+	return PAUSE;
+  e8:	81 e0       	ldi	r24, 0x01	; 1
+	
+	return 255;
+}
+  ea:	08 95       	ret
+
+000000ec <main>:
+
+
+int main(void)
+{
+	USART_Init(MYUBRR);
+  ec:	87 e6       	ldi	r24, 0x67	; 103
+  ee:	90 e0       	ldi	r25, 0x00	; 0
+  f0:	0e 94 4b 00 	call	0x96	; 0x96 <USART_Init>
+	unsigned char i, input = 'a', state = NORMAL;
+  f4:	d0 e0       	ldi	r29, 0x00	; 0
+
+	while(1) {
+		// USART_Transmit(DEFAULT_CHAR);
+		// input = USART_Receive();
+		input = 'a';
+		if(UCSR0A & (1 << RXC0))
+  f6:	0f 2e       	mov	r0, r31
+  f8:	f0 ec       	ldi	r31, 0xC0	; 192
+  fa:	ef 2e       	mov	r14, r31
+  fc:	f1 2c       	mov	r15, r1
+  fe:	f0 2d       	mov	r31, r0
+	unsigned char i, input = 'a', state = NORMAL;
+
+	while(1) {
+		// USART_Transmit(DEFAULT_CHAR);
+		// input = USART_Receive();
+		input = 'a';
+ 100:	11 e6       	ldi	r17, 0x61	; 97
+		if(UCSR0A & (1 << RXC0))
+		input = UDR0;
+ 102:	0f 2e       	mov	r0, r31
+ 104:	f6 ec       	ldi	r31, 0xC6	; 198
+ 106:	cf 2e       	mov	r12, r31
+ 108:	d1 2c       	mov	r13, r1
+ 10a:	f0 2d       	mov	r31, r0
+
+	while(1) {
+		// USART_Transmit(DEFAULT_CHAR);
+		// input = USART_Receive();
+		input = 'a';
+		if(UCSR0A & (1 << RXC0))
+ 10c:	f7 01       	movw	r30, r14
+ 10e:	80 81       	ld	r24, Z
+ 110:	88 23       	and	r24, r24
+ 112:	1c f4       	brge	.+6      	; 0x11a <main+0x2e>
+		input = UDR0;
+ 114:	f6 01       	movw	r30, r12
+ 116:	60 81       	ld	r22, Z
+ 118:	01 c0       	rjmp	.+2      	; 0x11c <main+0x30>
+	unsigned char i, input = 'a', state = NORMAL;
+
+	while(1) {
+		// USART_Transmit(DEFAULT_CHAR);
+		// input = USART_Receive();
+		input = 'a';
+ 11a:	61 2f       	mov	r22, r17
+		if(UCSR0A & (1 << RXC0))
+		input = UDR0;
+		
+		state = getNextState(state, input);
+ 11c:	8d 2f       	mov	r24, r29
+ 11e:	0e 94 5e 00 	call	0xbc	; 0xbc <getNextState>
+ 122:	d8 2f       	mov	r29, r24
+		
+		if(state == NORMAL)
+ 124:	81 11       	cpse	r24, r1
+ 126:	04 c0       	rjmp	.+8      	; 0x130 <main+0x44>
+		USART_Transmit(DEFAULT_CHAR);
+ 128:	81 2f       	mov	r24, r17
+ 12a:	0e 94 56 00 	call	0xac	; 0xac <USART_Transmit>
+ 12e:	ee cf       	rjmp	.-36     	; 0x10c <main+0x20>
+		else if (state == TENCHAR) {
+ 130:	82 30       	cpi	r24, 0x02	; 2
+ 132:	61 f7       	brne	.-40     	; 0x10c <main+0x20>
+ 134:	ca e0       	ldi	r28, 0x0A	; 10
+			for(i = 0; i < 10; i++)
+			USART_Transmit(tmp_char);
+ 136:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__data_start>
+ 13a:	0e 94 56 00 	call	0xac	; 0xac <USART_Transmit>
+ 13e:	c1 50       	subi	r28, 0x01	; 1
+		state = getNextState(state, input);
+		
+		if(state == NORMAL)
+		USART_Transmit(DEFAULT_CHAR);
+		else if (state == TENCHAR) {
+			for(i = 0; i < 10; i++)
+ 140:	d1 f7       	brne	.-12     	; 0x136 <main+0x4a>
+ 142:	e4 cf       	rjmp	.-56     	; 0x10c <main+0x20>
+
+00000144 <_exit>:
+ 144:	f8 94       	cli
+
+00000146 <__stop_program>:
+ 146:	ff cf       	rjmp	.-2      	; 0x146 <__stop_program>
